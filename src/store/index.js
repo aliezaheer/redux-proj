@@ -5,6 +5,10 @@ const counterReducer = (state = { counter: 0 }, action) => {
     return { counter: state.counter + 1 };
   }
 
+  if (action.type === "INCR_BY_5") {
+    return { counter: state.counter + action.payload };
+  }
+
   if (action.type === "DECR") {
     return { counter: state.counter - 1 };
   }
