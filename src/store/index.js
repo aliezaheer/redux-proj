@@ -1,6 +1,8 @@
 import { legacy_createStore } from "redux";
 
-const counterReducer = (state = { counter: 0 }, action) => {
+const initialValue = { counter: 0, showCounter: true };
+
+const counterReducer = (state = initialValue, action) => {
   if (action.type === "INCR") {
     return { counter: state.counter + 1 };
   }
@@ -11,6 +13,10 @@ const counterReducer = (state = { counter: 0 }, action) => {
 
   if (action.type === "DECR") {
     return { counter: state.counter - 1 };
+  }
+
+  if (action.type === "TOGGLE") {
+    return { showCounter: !state.showCounter, counter: state.counter };
   }
 
   return state;
